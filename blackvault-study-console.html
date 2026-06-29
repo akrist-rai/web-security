@@ -174,7 +174,7 @@ const PHASES=[
  quiz:[
   {q:'You change JWT header to {"alg":"none"} and remove the signature. Server accepts it. This is:',o:['Normal behavior','alg:none attack — library skips signature check','Replay attack','Broken token'],a:1,e:'Some JWT libraries accept alg:none and skip verification — any claim can be forged.'},
   {q:'Server uses RS256. You change alg to HS256 and sign with the server\'s PUBLIC key. Why might this work?',o:['It cannot work — different algorithms','Library uses same key for both modes — public key becomes HMAC secret','You need the private key','Only works on JWT v1'],a:1,e:'Algorithm confusion: if the library mishandles alg switching, the public key (from /jwks.json) validates the HS256 signature.'},
-  {q:'kid header is interpolated into: SELECT key FROM keys WHERE id=\'"+kid+"\''. You inject:',o:['A normal key ID','\'  UNION SELECT \'mysecret\'-- to control the signing key','base64 payload','Any valid JWT'],a:1,e:'SQL injection in kid lets you return an attacker-controlled key — forge any token with that key.'},
+  {q:'kid header is interpolated into: SELECT key FROM keys WHERE id=\'"+kid+\"\'. You inject:',o:['A normal key ID','\'  UNION SELECT \'mysecret\'-- to control the signing key','base64 payload','Any valid JWT'],a:1,e:'SQL injection in kid lets you return an attacker-controlled key — forge any token with that key.'},
  ]},
 {n:3,id:'idor',title:'IDOR',tracks:['AUTH'],
  tag:'object reference · horizontal · vertical · blind · UUID',
